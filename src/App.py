@@ -21,36 +21,34 @@ movies = pickle.load(open(movies_path, 'rb'))
 similarity = pickle.load(open(similarity_path, 'rb'))
 movies_list = movies['title'].values
 
-# Custom CSS for dark mode, text color, and spacing
+# Custom CSS for dark mode with red and black theme
 st.markdown("""
     <style>
     .stApp {
-        background-color: #121212;
-        color: #e0e0e0;
+        background-color: #141414; /* Dark background color */
+        color: #ffffff; /* Default text color */
     }
     .stHeader {
         color: #ff0000; /* Red color for header */
     }
     .stSelectbox {
-        margin-bottom: 20px; /* Add space below the dropdown */
+        margin-bottom: 20px; /* Space below the dropdown */
     }
     .stButton>button {
-        background-color: #6200ee;
-        color: #ffffff;
-        border: none;
+        background-color: #ff0000; /* Red button background */
+        color: #ffffff; /* White text color for the button */
+        border: 1px solid #ff0000; /* Red border */
         border-radius: 4px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
     }
     .stButton>button:hover {
-        background-color: #3700b3;
+        background-color: #e60000; /* Darker red on hover */
+        border: 1px solid #e60000;
     }
-    .css-1v3fvcr {
-        color: #e0e0e0;
-    }
-    .css-1y4f0z7 {
-        color: #e0e0e0;
+    .stText {
+        color: #ffffff; /* Ensure text is readable */
     }
     </style>
 """, unsafe_allow_html=True)

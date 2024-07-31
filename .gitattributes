@@ -2,3 +2,7 @@
 * text=auto
 *.pkl filter=lfs diff=lfs merge=lfs -text
 data/* filter=lfs diff=lfs merge=lfs -text
+models/similarity.pkl filter=lfs diff=lfs merge=lfs -text
+data/movies.csv filter=lfs diff=lfs merge=lfs -text
+data/tmdb_5000_credits.csv filter=lfs diff=lfs merge=lfs -text
+data/tmdb_5000_movies.csv filter=lfs diff=lfs merge=lfs -text

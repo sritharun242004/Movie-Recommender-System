@@ -4,11 +4,10 @@ import requests
 import os
 
 def fetch_poster(movie_id):
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=5c9b618a6739a3c302d0fcf82533ac8e&language=en-US".format(movie_id)
-    data = requests.get(url)
-    data = data.json()
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=5c9b618a6739a3c302d0fcf82533ac8e&language=en-US"
+    data = requests.get(url).json()
     poster_path = data['poster_path']
-    full_path = "https://image.tmdb.org/t/p/w500/" + poster_path
+    full_path = f"https://image.tmdb.org/t/p/w500/{poster_path}"
     return full_path
 
 # Construct file paths relative to the script location
@@ -17,8 +16,13 @@ movies_path = os.path.join(base_dir, '..', 'models', 'movies_list.pkl')
 similarity_path = os.path.join(base_dir, '..', 'models', 'similarity.pkl')
 
 # Load the movies and similarity data
-movies = pickle.load(open(movies_path, 'rb'))
-similarity = pickle.load(open(similarity_path, 'rb'))
+try:
+    movies = pickle.load(open(movies_path, 'rb'))
+    similarity = pickle.load(open(similarity_path, 'rb'))
+except FileNotFoundError as e:
+    st.error(f"File not found: {e}")
+    st.stop()
+
 movies_list = movies['title'].values
 
 # Custom CSS for dark mode with red and black theme

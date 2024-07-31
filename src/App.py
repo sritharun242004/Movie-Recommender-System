@@ -21,12 +21,18 @@ movies = pickle.load(open(movies_path, 'rb'))
 similarity = pickle.load(open(similarity_path, 'rb'))
 movies_list = movies['title'].values
 
-# Custom CSS for dark mode
+# Custom CSS for dark mode, text color, and spacing
 st.markdown("""
     <style>
     .stApp {
         background-color: #121212;
         color: #e0e0e0;
+    }
+    .stHeader {
+        color: #ff0000; /* Red color for header */
+    }
+    .stSelectbox {
+        margin-bottom: 20px; /* Add space below the dropdown */
     }
     .stButton>button {
         background-color: #6200ee;
@@ -51,7 +57,10 @@ st.markdown("""
 
 st.header("Movie Recommender System")
 
-selectvalue = st.selectbox("Select movie from dropdown", movies_list)
+selectvalue = st.selectbox("Select movie from dropdown", movies_list, key="select_movie")
+
+# Adding space between the dropdown and the button
+st.markdown('<div style="margin-bottom: 20px;"></div>', unsafe_allow_html=True)
 
 def recommend(movie):
     index = movies[movies['title'] == movie].index[0]

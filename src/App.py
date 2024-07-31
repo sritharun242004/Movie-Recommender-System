@@ -21,6 +21,34 @@ movies = pickle.load(open(movies_path, 'rb'))
 similarity = pickle.load(open(similarity_path, 'rb'))
 movies_list = movies['title'].values
 
+# Custom CSS for dark mode
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    .stButton>button {
+        background-color: #6200ee;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .stButton>button:hover {
+        background-color: #3700b3;
+    }
+    .css-1v3fvcr {
+        color: #e0e0e0;
+    }
+    .css-1y4f0z7 {
+        color: #e0e0e0;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.header("Movie Recommender System")
 
 selectvalue = st.selectbox("Select movie from dropdown", movies_list)

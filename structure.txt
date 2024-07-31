@@ -1,0 +1,23 @@
+Music-Recommendation-System/
+├── src/                      # Source code for the project
+│   ├── __init__.py           # Make src a Python package (if needed)
+│   ├── App.py                # Main application entry point (e.g., Streamlit app)
+│   ├── exe.py                # Additional source code for the project
+│
+├── data/                     # Data files
+│   ├── movies.csv            # Movies data in CSV format
+│   ├── tmdb_5000_credits.csv # TMDB credits data
+│   └── tmdb_5000_movies.csv  # TMDB movies data
+│
+├── models/                   # Directory for machine learning models
+│   ├── movies_list.pkl       # Pickled movies list or model
+│   ├── similarity.pkl        # Precomputed similarity matrix
+│
+├── .gitignore                # Git ignore file to exclude unnecessary files from version control
+├── movies.ipynb              # Jupyter notebook for data exploration and analysis
+├── requirements.txt          # List of dependencies
+├── setup.py                  # Setup script for packaging the project
+├── setup.sh                  # Setup script
+├── README.md                 # Project overview and setup instructions
+└── structure.txt             # Description of project structure and organization
+

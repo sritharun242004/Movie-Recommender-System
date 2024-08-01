@@ -30,7 +30,7 @@ Dynamic Columns: The recommended movies are displayed in a responsive layout usi
 4. The result is a value between [0, 1], where 0 means completely different and 1 means completely similar.
 5. For more details, check the URL: [Cosine Similarity Explanation](https://www.learndatasci.com/glossary/cosine-similarity/)
 
-You can access the deployed application using the following link: [Movie Recommender App](https://movie-recommender-system-hwpjsdezdyosgup6ygjwf6.streamlit.app/)
+You can access the deployed application using the following link:[Movie Recommender App](https://movie-recommender-system-hwpjsdezdyosgup6ygjwf6.streamlit.app/)
 ## Dataset Used:
 
 * [Dataset link](https://www.kaggle.com/tmdb/tmdb-movie-metadata?select=tmdb_5000_movies.csv)

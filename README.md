@@ -2,30 +2,26 @@
 Recommendation systems are becoming increasingly important in today’s extremely busy world. People are always short on time with the myriad tasks they need to accomplish in the limited 24 hours. Therefore, the recommendation systems are important as they help them make the right choices, without having to expend their cognitive resources.
 
 The purpose of a recommendation system basically is to search for content that would be interesting to an individual. Moreover, it involves a number of factors to create personalised lists of useful and interesting content specific to each user/individual. Recommendation systems are Artificial Intelligence based algorithms that skim through all possible options and create a customized list of items that are interesting and relevant to an individual. These results are based on their profile, search/browsing history, what other people with similar traits/demographics are watching, and how likely are you to watch those movies. This is achieved through predictive modeling and heuristics with the data available.
-## Types of Recommendation System:
+## Key Features:
+### Movie Recommendation:
 
-### 1) Content Based:
+1.Personalized Recommendations: Users can select a movie from a dropdown, and the app will recommend similar movies based on a pre-trained similarity model.
+Poster Fetching: The app fetches and displays movie posters for the recommended movies using the TMDB API.
 
-- Content-based systems, which use characteristic information and take item attributes into consideration.
-- Examples: Twitter, YouTube.
-- Analyzes user-specific actions or similar items recommendation.
-- Creates a vector of item features for recommendations.
-- **Pros:** Tailored recommendations based on user history.
-- **Cons:** May lead to over-specialization and limit recommendations to specific categories.
+2.User Interface:
+Dark Mode Theme: The app uses a dark background with a red and black color scheme, inspired by Netflix.
+Styled Headers and Buttons: Headers and buttons are styled with custom CSS for a consistent and visually appealing UI.
+Spacing and Layout: Proper spacing is maintained between UI elements for a clean and organized layout.
 
-### 2) Collaborative Based:
+3.Data Handling:
+Pickle File Loading: The app loads preprocessed movie data and similarity matrix from pickle files.
+Error Handling: The app includes error handling to manage file loading issues gracefully.
 
-- Collaborative filtering systems, which are based on user-item interactions.
-- Examples: Book recommendations, clustering users with similar ratings.
-- **Pros:** Recommendations based on user similarity and interactions.
-- **Cons:** Computationally expensive, may favor popular items, and struggle with new items.
+4.API Integration:
+TMDB API: The app integrates with the TMDB API to fetch movie posters, enhancing the visual appeal of the recommendations.
 
-### 3) Hybrid Based:
-
-- Hybrid systems, which combine both content-based and collaborative filtering approaches.
-- **Pros:** Combines the strengths of both methods to improve recommendation accuracy.
-- **Cons:** Complex implementation and requires balancing both approaches.
-
+5.Responsive Layout:
+Dynamic Columns: The recommended movies are displayed in a responsive layout using Streamlit's column functionality.
 ## Concept Used to Build the `model.pkl` File: Cosine Similarity
 
 1. **Cosine Similarity** is a metric that measures the similarity between documents.
@@ -34,6 +30,9 @@ The purpose of a recommendation system basically is to search for content that w
 4. The result is a value between [0, 1], where 0 means completely different and 1 means completely similar.
 5. For more details, check the URL: [Cosine Similarity Explanation](https://www.learndatasci.com/glossary/cosine-similarity/)
 
+You can access the deployed application using the following link:
+
+[Movie Recommender App](https://movie-recommender-system-hwpjsdezdyosgup6ygjwf6.streamlit.app/)
 ## Dataset Used:
 
 * [Dataset link](https://www.kaggle.com/tmdb/tmdb-movie-metadata?select=tmdb_5000_movies.csv)
@@ -72,3 +71,6 @@ The purpose of a recommendation system basically is to search for content that w
 
    If you are running the application on a remote server or cloud service, make sure to use the appropriate URL provided by your hosting service.
 
+```bash
+   Author : Tharun Kumar L
+   Email  : sritharun.242004@gmail.com

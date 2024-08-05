@@ -4,7 +4,7 @@ import requests
 import os
 
 def fetch_poster(movie_id):
-    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={tmdb_api_key}&language=en-US"
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={TMDB_API_KEY}&language=en-US"
     data = requests.get(url).json()
     poster_path = data['poster_path']
     full_path = f"https://image.tmdb.org/t/p/w500/{poster_path}"
@@ -93,3 +93,4 @@ if st.button("Show Recommend"):
     with col5:
         st.text(movie_name[4])
         st.image(movie_poster[4])
+

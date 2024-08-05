@@ -2,13 +2,27 @@ import streamlit as st
 import pickle
 import requests
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Fetch API key from environment variable
+TMDB_API_KEY = os.getenv("TMDB_API_KEY")
+
+# Ensure TMDB_API_KEY is loaded
+if not TMDB_API_KEY:
+    st.error("TMDB_API_KEY not found. Please ensure it is set in the .env file.")
+    st.stop()
 
 def fetch_poster(movie_id):
     url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={TMDB_API_KEY}&language=en-US"
     data = requests.get(url).json()
-    poster_path = data['poster_path']
-    full_path = f"https://image.tmdb.org/t/p/w500/{poster_path}"
-    return full_path
+    poster_path = data.get('poster_path', '')
+    if poster_path:
+        full_path = f"https://image.tmdb.org/t/p/w500/{poster_path}"
+        return full_path
+    return ""
 
 # Construct file paths relative to the script location
 base_dir = os.path.dirname(__file__)
@@ -17,15 +31,17 @@ similarity_path = os.path.join(base_dir, '..', 'models', 'similarity.pkl')
 
 # Load the movies and similarity data
 try:
-    movies = pickle.load(open(movies_path, 'rb'))
-    similarity = pickle.load(open(similarity_path, 'rb'))
+    with open(movies_path, 'rb') as f:
+        movies = pickle.load(f)
+    with open(similarity_path, 'rb') as f:
+        similarity = pickle.load(f)
 except FileNotFoundError as e:
     st.error(f"File not found: {e}")
     st.stop()
 
 movies_list = movies['title'].values
 
-# Custom CSS for dark mode with red and black theme
+# Custom CSS for dark mode with lighter red header and button text
 st.markdown("""
     <style>
     .stApp {
@@ -33,31 +49,42 @@ st.markdown("""
         color: #ffffff; /* Default text color */
     }
     .stHeader {
-        color: #ff0000; /* Red color for header */
+        color: #B22222; /* Lighter red color for header */
     }
     .stSelectbox {
         margin-bottom: 20px; /* Space below the dropdown */
     }
     .stButton>button {
-        background-color: #ff0000; /* Red button background */
-        color: #ffffff; /* White text color for the button */
-        border: 1px solid #ff0000; /* Red border */
+        background-color: #B22222; /* Lighter red button background */
+        color: #ffffff !important; /* White text color for the button */
+        border: 1px solid #B22222; /* Lighter red border */
         border-radius: 4px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
     }
     .stButton>button:hover {
-        background-color: #e60000; /* Darker red on hover */
-        border: 1px solid #e60000;
+        background-color: #A00000; /* Darker red on hover */
+        border: 1px solid #A00000;
     }
     .stText {
         color: #ffffff; /* Ensure text is readable */
     }
+    .footer {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #141414;
+        color: white;
+        text-align: right;
+        padding: 10px;
+        font-size: 14px;
+    }
     </style>
 """, unsafe_allow_html=True)
 
-st.header("Movie Recommender System")
+st.markdown('<h1 class="stHeader">Movie Recommender System</h1>', unsafe_allow_html=True)
 
 selectvalue = st.selectbox("Select movie from dropdown", movies_list, key="select_movie")
 
@@ -78,19 +105,10 @@ def recommend(movie):
 if st.button("Show Recommend"):
     movie_name, movie_poster = recommend(selectvalue)
     col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        st.text(movie_name[0])
-        st.image(movie_poster[0])
-    with col2:
-        st.text(movie_name[1])
-        st.image(movie_poster[1])
-    with col3:
-        st.text(movie_name[2])
-        st.image(movie_poster[2])
-    with col4:
-        st.text(movie_name[3])
-        st.image(movie_poster[3])
-    with col5:
-        st.text(movie_name[4])
-        st.image(movie_poster[4])
+    for i, col in enumerate([col1, col2, col3, col4, col5]):
+        with col:
+            st.text(movie_name[i])
+            st.image(movie_poster[i])
 
+# Adding footer
+st.markdown('<div class="footer">© Tharun</div>', unsafe_allow_html=True)

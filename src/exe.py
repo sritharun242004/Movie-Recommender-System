@@ -7,6 +7,7 @@ st.title("Movie Recommendatation system")
 movie_df=pickle.load(open("movies_list.pkl","rb"))
 similarity=pickle.load(open("similarity.pkl","rb"))
 list_movie=np.array(movie_df["title"])
+
 option = st.selectbox(
 "Select Movie ",
 (list_movie))

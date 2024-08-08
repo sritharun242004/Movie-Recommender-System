@@ -20,4 +20,3 @@ Music-Recommendation-System/
 ├── setup.sh                  # Setup script
 ├── README.md                 # Project overview and setup instructions
 └── structure.txt             # Description of project structure and organization
-

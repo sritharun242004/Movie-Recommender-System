@@ -42,7 +42,7 @@ Dynamic Columns: The recommended movies are displayed in a responsive layout usi
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/entbappy/Movie-Recommender-System-Using-Machine-Learning.git
+   git clone https://github.com/githubusername/Movie-Recommender-System-Using-Machine-Learning.git
 
 2. **Create a Virtual Environment:**
    It is recommended to use a virtual environment to manage your project's dependencies. To create and activate a virtual environment, run:
